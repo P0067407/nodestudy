@@ -1,5 +1,8 @@
 .DS_Store
 node_modules
+bin/
+.vs/
+obj/
 demo01/node_modules/
 dist/
 npm-debug.log

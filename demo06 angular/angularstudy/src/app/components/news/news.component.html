@@ -1,2 +1,25 @@
 <p>news works!</p>
 {{msg}}
+{{userinfo.username}}
+{{userinfo.id}}
+<div title='我是一个div'>
+    鼠标描上去看一下
+</div>
+
+<div [title]='msg'>
+    鼠标描上去看一下
+</div>
+
+<span [innerHtml]='msg'></span>
+
+<ul>
+    <li *ngFor="let item of arr">
+        {{item}}
+    </li>
+</ul>
+
+<ul>
+    <li *ngFor="let item of list">
+        {{item}}
+    </li>
+</ul>

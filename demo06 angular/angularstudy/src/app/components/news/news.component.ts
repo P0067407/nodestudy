@@ -6,8 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news.component.css']
 })
 export class NewsComponent implements OnInit {
-  msg='xxxxxxxsssss'
-  constructor() { }
+  msg='<h1>html标签<h1>';
+  public userinfo:object={
+    username:"张三"
+  }
+  arr=['1111','4444','2333']
+  public list:any[]=['1111','4444','2333']
+  public items:Array<string>=['1111','4444','2333']
+  constructor() { 
+    this.userinfo["id"]=38;
+  }
 
   ngOnInit() {
   }
