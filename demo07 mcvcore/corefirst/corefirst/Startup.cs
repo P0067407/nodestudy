@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace corefirst
 {
@@ -43,13 +44,41 @@ namespace corefirst
             IApplicationBuilder app,
             IHostingEnvironment env,
             IConfiguration configuration,
-            IWelcomeService welcomeService)
+            IWelcomeService welcomeService,
+            ILogger<Startup> logger
+            
+            )
         {
             //服务注册和管道 
             var welcome = configuration["Welcome"];
             Console.WriteLine(welcome);
             var ws = welcomeService.getMessage();
             Console.WriteLine(ws);
+
+            //app.UseWelcomePage();
+            #region 中间件使用
+            //app.Use(next =>
+            //{
+            //    return async httpContext =>
+            //    {
+            //        if (httpContext.Request.Path.StartsWithSegments("/first"))
+            //        {
+            //            await httpContext.Response.WriteAsync("First!!!");
+            //        }
+            //        else
+            //        {
+            //            logger.LogInformation("---next(xxxx)----");
+            //            await next(httpContext);
+            //        }
+            //    };
+            //});
+            //app.UseWelcomePage(new WelcomePageOptions { Path="/welcome"});
+            #endregion
+
+
+
+            //app.UseWelcomePage(new WelcomePageOptions { Path = "/welcome" });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
