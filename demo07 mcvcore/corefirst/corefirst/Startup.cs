@@ -94,7 +94,10 @@ namespace corefirst
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseMvc();
+            app.UseMvc(builder =>
+            {
+                builder.MapRoute("Default", "{controller}/{action}/{id?}");
+            });
         }
     }
 }

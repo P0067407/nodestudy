@@ -13,7 +13,7 @@
         zip.generateAsync({type:"blob"})
         .then(function(content) {
             // see FileSaver.js
-            saveAs(content, "example.zip");
+            zip.saveAs(content, "example.zip");
         });
     } ()); // 推荐使用这个  
 
@@ -22,6 +22,21 @@
 <body>
     <h1>vue 2.0实例 
     </h1> 
+    live-server 运行代码
+    <a href='/example/demo01.html'>demo01</a>
+    <a href='/example/demo01.html'>demo01</a>
+    <a href='/example/demo01.html'>demo01</a>
+    <a href='/example/demo01.html'>demo01</a>
+    <a href='/example/demo01.html'>demo01</a>
+
+    <h1>css实例 
+        </h1> 
+        live-server 运行代码
+        <a href='/example/cssdemo/demo01.html'>demo01</a>
+        <a href='/example/demo01.html'>demo01</a>
+        <a href='/example/cssdemo/demo02.html'>demo02</a>
+        <a href='/example/cssdemo/demo03.html'>demo03</a>
+        <a href='/example/cssdemo/demo04.html'>demo04</a>
 </body>
 </html>
 <script>
