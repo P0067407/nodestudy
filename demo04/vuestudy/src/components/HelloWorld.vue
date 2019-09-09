@@ -31,10 +31,30 @@
 </template>
 
 <script>
+import JSZip from 'jszip';//引入打包工具
+
+import FileSaver from 'file-saver';//引入存储工具
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  mounted: function() {
+    this.xxxx();
+  },
+
+  methods:{
+    xxxx: function() {
+        var zip = new JSZip();
+        zip.file("Hello.txt", "Hello World\n");  
+        zip.generateAsync({type:"blob"})
+        .then(function(content) {
+            // see FileSaver.js
+            saveAs(content, "example.zip");
+            // console.log(content)
+            //navigator.msSaveBlob(content, "example.zip");
+        }); 
+    },
   }
 }
 </script>
