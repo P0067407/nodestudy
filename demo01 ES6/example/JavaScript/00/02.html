@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div  v-if="isShow">嘻嘻嘻</div>
+        <button @click="des">销毁</button>
+        <button @click="show">点击</button>
+        <div id="toast"></div>
+    </div>
+    <script src="../../../assets/js/vue.js"></script>
+    <script>
+        var Toast = Vue.extend({
+            template:'<div> <button @click="show">打印</button> </div>',
+            created() {
+                this.$on('print',()=>{
+                    console.log("打印好东西，哈哈哈");
+                })
+            },
+            methods:{
+                show(){
+                    this.$emit('print');
+                }
+            }
+        })
+        var toast = new Toast();
+        var vm = new Vue({
+            el:"#app",
+            data:function(){
+                return {
+                    isShow:true
+                }
+            },
+            created() {
+                 this.$on('show',()=>{
+                    console.log("嘻嘻嘻");
+                 });
+                 this.$once('hook:beforeDestroy',()=>{
+                     toast.$destroy();
+                 })
+            },
+            methods:{
+                show(){
+                    this.$emit('show');
+                    this.isShow = this.isShow ?  false : true;
+                    if(!toast.$el){
+                        toast.$mount('#toast');
+                    }
+                },
+                des(){
+                    vm.$destroy();
+                }
+            },
+            destroyed() {
+                console.log("实例已经销毁了");
+            }
+        });
+    </script>
+</body>
+</html> 
